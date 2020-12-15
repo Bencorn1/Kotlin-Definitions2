@@ -1,5 +1,4 @@
-
-What is a "Lateinit" function?
+**What is a "Lateinit" function?
 There are many cases when you need to create a variable but you don't want to initialize it at the time of declaration/creation of the variable because you are sure that the variable will be initialized before its access/usage.  The lateinit keyword is used for late initialization of variables.
 Here is an example of lateinit:
 ''
