@@ -1,33 +1,41 @@
-**What is a "Lateinit" function?
+** What is a "Lateinit" function? **
+
 There are many cases when you need to create a variable but you don't want to initialize it at the time of declaration/creation of the variable because you are sure that the variable will be initialized before its access/usage.  The lateinit keyword is used for late initialization of variables.
 Here is an example of lateinit:
-''
+
+``
 private lateinit var courseName: String
 // demo function to get course name using the courseId
 fun fetchCourseName(courseId: String) {
     courseName = courseRepository.getCourseName(courseId)
     // this is an example, you can add other suff according to your usecase
 }
+``
 To use a lateinit variable, variable should use var and NOT val. Lateinit is allowed for non-primitive data types only and the variable can't be of null type. Also, lateinit variable can be declared either inside the class or it can be a top-level property.
 
-What is a "Lazy" function?
+*What is a "Lazy" function?*
+
 There are certain classes whose object initialization is very heavy and so much time taking that it results in the delay of the whole class creation process.
 For example, let's say you have a class named BigClass and you need an object of this BigClass in some other class named SomeClass:
 
+``
 class SomeClass {
     private val bigObject: BigClass = BigClass()
 }
-
+``
 Here, we are creating a big object and this will result in slow or delayed creation of the SomeClass. There may be cases where you may not need the BigClass object. So, in this case, the lazy keyword can help you:
 
+``
 class SomeClass {
      private val bigObject: BigClass by lazy {
         BigClass()
     } 
 }
+``
 
 The object will be created only when it is called otherwise it will not be created,  once the object it's initialized, the same object will be called again.
 
+``
 class SomeClass {
     private val bigObject: BigClass by lazy {
         println("Big Object initialised")
@@ -43,4 +51,4 @@ fun main(args: Array<String>) {
     someClass.accessObject()
     someClass.accessObject()
 }
-
+``
